@@ -106,7 +106,8 @@ public class StorageFile {
             marshaller.marshal(toSave, fileWriter);
 
         } catch (IOException ioe) {
-            throw new StorageOperationException("Error writing to file: " + path);
+            System.out.println("Please check if " + path + " is set to Read-only.");
+            // throw new StorageOperationException("Error writing to file: " + path);
         } catch (JAXBException jaxbe) {
             throw new StorageOperationException("Error converting address book into storage format");
         }
