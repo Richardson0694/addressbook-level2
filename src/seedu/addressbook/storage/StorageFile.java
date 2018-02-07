@@ -107,7 +107,6 @@ public class StorageFile {
 
         } catch (IOException ioe) {
             System.out.println("Please check if " + path + " is set to Read-only.");
-            // throw new StorageOperationException("Error writing to file: " + path);
         } catch (JAXBException jaxbe) {
             throw new StorageOperationException("Error converting address book into storage format");
         }
