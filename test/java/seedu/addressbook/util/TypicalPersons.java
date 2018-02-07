@@ -24,9 +24,9 @@ public class TypicalPersons {
             bill = new Person(new Name("Bill Clint"), new Phone("92229222", false), new Email("bc@gmail.com", false),
                     new Address("2, Clementi Road, #12-34, 222222", true), new UniqueTagList());
             candy = new Person(new Name("Candy Destiny"), new Phone("93339333", true),
-                    new Email("cd@gmail.com", false), new Address("3 Clementi Road", true), new UniqueTagList());
+                    new Email("cd@gmail.com", false), new Address("3, Clementi Road, #12-34, 333333", true), new UniqueTagList());
             dan = new Person(new Name("Dan Smith"), new Phone("1234556", true), new Email("ss@tt.com", true),
-                    new Address("3, NUS, #12-34, 333333", true), new UniqueTagList(new Tag("Test")));
+                    new Address("3, NUS, #12-34, 444444", true), new UniqueTagList(new Tag("Test")));
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";
