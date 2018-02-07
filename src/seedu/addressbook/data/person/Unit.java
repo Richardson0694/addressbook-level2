@@ -15,6 +15,8 @@ public class Unit {
         this.unit = unit;
     }
 
+    public String getUnit() { return unit; }
+
     @Override
     public String toString() {
         return unit;

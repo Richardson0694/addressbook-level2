@@ -15,6 +15,8 @@ public class Block {
         this.block = block;
     }
 
+    public String getBlock() { return block; }
+
     @Override
     public String toString() {
         return block;

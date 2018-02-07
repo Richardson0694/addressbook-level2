@@ -15,6 +15,8 @@ public class Street {
         this.street = street;
     }
 
+    public String getStreet() { return street; }
+
     @Override
     public String toString() {
         return street;
