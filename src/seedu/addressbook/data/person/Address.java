@@ -44,9 +44,9 @@ public class Address {
         this.unit = new Unit(splitAddress[ADDRESS_DATA_INDEX_UNIT]);
         this.postalCode = new PostalCode(splitAddress[ADDRESS_DATA_INDEX_POSTALCODE]);
 
-        this.value = block.getBlock() + ", " +
-                street.getStreet() + ", " +
-                unit.getUnit() + ", " +
+        this.value = block.getBlock() + "," +
+                street.getStreet() + "," +
+                unit.getUnit() + "," +
                 postalCode.getPostalCode();
     }
 
