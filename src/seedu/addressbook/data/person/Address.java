@@ -8,8 +8,8 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Address {
 
-    public static final String EXAMPLE = "123, some street";
-    public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
+    public static final String EXAMPLE = "123, some street, some unit, some postal code";
+    public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses should be in format of block, street, unit, postal code";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
 
     public final String value;
@@ -19,6 +19,11 @@ public class Address {
     private Street street;
     private Unit unit;
     private PostalCode postalCode;
+    private static final String ADDRESS_SPLIT_REGEX = ",";
+    private static final int ADDRESS_DATA_INDEX_BLOCK = 0;
+    private static final int ADDRESS_DATA_INDEX_STREET = 1;
+    private static final int ADDRESS_DATA_INDEX_UNIT = 2;
+    private static final int ADDRESS_DATA_INDEX_POSTALCODE = 3;
 
     /**
      * Validates given address.
@@ -27,14 +32,18 @@ public class Address {
      */
     public Address(String address, boolean isPrivate) throws IllegalValueException {
         String trimmedAddress = address.trim();
-        this.block = block;
-        this.street = street;
-        this.unit = unit;
-        this.postalCode = postalCode;
+
         this.isPrivate = isPrivate;
         if (!isValidAddress(trimmedAddress)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
+
+        String splitAddress[] = trimmedAddress.split(ADDRESS_SPLIT_REGEX);
+        this.block = new Block(splitAddress[ADDRESS_DATA_INDEX_BLOCK]);
+        this.street = new Street(splitAddress[ADDRESS_DATA_INDEX_STREET]);
+        this.unit = new Unit(splitAddress[ADDRESS_DATA_INDEX_UNIT]);
+        this.postalCode = new PostalCode(splitAddress[ADDRESS_DATA_INDEX_POSTALCODE]);
+
         this.value = trimmedAddress;
     }
 
