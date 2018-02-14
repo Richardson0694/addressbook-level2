@@ -1,9 +1,6 @@
 package seedu.addressbook.data;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
@@ -127,5 +124,18 @@ public class AddressBook {
                 || (other instanceof AddressBook // instanceof handles nulls
                         && this.allPersons.equals(((AddressBook) other).allPersons)
                         && this.allTags.equals(((AddressBook) other).allTags));
+    }
+    
+    /**
+     * Returns a new UniqueTagList of all tags in the address book at the time of the call.
+     */
+    public UniquePersonList sortList(){
+        allPersons.sortName(new Comparator<Person>() {
+            @Override
+            public int compare(Person person1, Person person2) {
+                return person1.getName().toString().compareToIgnoreCase(person2.getName().toString());
+            }
+        });
+        return new UniquePersonList(allPersons);
     }
 }
